@@ -67,5 +67,6 @@ const RightMenu = styled.div`
   }
 `
 const CustomMenu = styled(MenuIcon)`
+  cursor: pointer;
 
 `
