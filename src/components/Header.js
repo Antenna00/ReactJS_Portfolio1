@@ -1,9 +1,11 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import styled from "styled-components"
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close';
 
 function Header() {
+  const [burgerStatus, setBurgerStatus] = useState(false);
+
   return (
     <div>
         <Container>
@@ -19,11 +21,11 @@ function Header() {
         <RightMenu>
           <a href="#">Shop</a>
           <a href="#">Tesla Account</a>
-          <CustomMenu />
         </RightMenu>
-        <BurgerNav>
+        <CustomMenu onClick={()=>setBurgerStatus(true)}/>
+        <BurgerNav show={burgerStatus}>
         <CloseWrapper>
-          <CustomClose></CustomClose>
+          <CustomClose onClick={()=>setBurgerStatus(false)}/>
         </CloseWrapper>
           <li><a href="#">Existing Inventory</a></li>
           <li><a href="#">Used Inventory</a></li>
@@ -85,7 +87,9 @@ const RightMenu = styled.div`
 
 const CustomMenu = styled(MenuIcon)`
   cursor: pointer;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `
 const BurgerNav = styled.div`
   position: fixed;
@@ -101,22 +105,32 @@ const BurgerNav = styled.div`
   flex-direction: column;
   text-align: start;
   padding-bottom: 70vh;
+  ${props => {
+    if(props.show === true){
+      return `transform: translateX(0%);`
+    }else if(props.show === false) {
+      return `transform: translateX(100%);`
+    }
+  }}
+  transition: transform 0.2s ease-in;
   li{
     padding: 15px 0;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
       a{
-        
         font-weight: 600;
       }
   }
 `
+//Or i can alternatively just write 107-113 as 
+//transform: ${props => props.show ? translateX(0%) : translateX(100%)}
 
 const CustomClose = styled(CloseIcon)`
-
+  cursor: pointer;
 `
 
 const CloseWrapper = styled.div`
-display: flex;
-justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
+
 
 `
