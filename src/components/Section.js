@@ -48,6 +48,7 @@ function Section({title, description, leftBtnText, rightBtnText, backgroundImg, 
             </HashLink>
           </Buttons>
     </Wrap>
+    
   )
 }
 
