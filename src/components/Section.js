@@ -1,8 +1,14 @@
 import React from 'react'
 import styled from "styled-components"
-import Fade from 'react-reveal/Fade';
+import Fade from 'react-reveal/Fade'
+import { Link, animateScroll as Scroll } from 'react-scroll';
+import { HashLink } from 'react-router-hash-link';
+import { Route, Routes, HashRouter, BrowserRouter as Router } from 'react-router-dom';
+import { NavHashLink } from 'react-router-hash-link';
 
-function Section({title, description, leftBtnText, rightBtnText, backgroundImg}) {
+
+function Section({title, description, leftBtnText, rightBtnText, backgroundImg, downArrow1, downArrow2, downArrow3, downArrow4, downArrow5}) {
+
   return (
     <Wrap bgImage={backgroundImg}>
       <Fade bottom>
@@ -25,7 +31,21 @@ function Section({title, description, leftBtnText, rightBtnText, backgroundImg})
               }
             </ButtonGroup>
             </Fade>
-            <DownArrow src={"/down-arrow.svg"} />
+            <HashLink smooth to="#Section2">
+            <DownArrow src={downArrow1}/>
+            </HashLink>
+            <HashLink smooth to="#Section3">
+            <DownArrow2 src={downArrow2}/>
+            </HashLink>
+            <HashLink smooth to="#Section4">
+            <DownArrow3 src={downArrow3}/>
+            </HashLink>
+            <HashLink smooth to="#Section5">
+            <DownArrow4 src={downArrow4}/>
+            </HashLink>
+            <HashLink smooth to="#Section1">
+            <DownArrow4 src={downArrow5}/>
+            </HashLink>
           </Buttons>
     </Wrap>
   )
@@ -89,6 +109,30 @@ const DownArrow = styled.img`
   height: 40px;
   overflow-x: hidden;
   animation: animateDown infinite 1.5s;
+  cursor: pointer;
+  animation: scroll-down 1s ease-in-out infinite;
 `
 
+const DownArrow2 = styled.img`
+  height: 40px;
+  overflow-x: hidden;
+  animation: animateDown infinite 1.5s;
+  cursor: pointer;
+  animation: scroll-down 1s ease-in-out infinite;
+`
+
+const DownArrow3 = styled.img`
+  height: 40px;
+  overflow-x: hidden;
+  animation: animateDown infinite 1.5s;
+  cursor: pointer;
+  animation: scroll-down 1s ease-in-out infinite;
+`
+const DownArrow4 = styled.img`
+  height: 40px;
+  overflow-x: hidden;
+  animation: animateDown infinite 1.5s;
+  cursor: pointer;
+  animation: scroll-down 1s ease-in-out infinite;
+`
 
